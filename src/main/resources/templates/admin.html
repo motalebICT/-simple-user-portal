@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>User List</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/806fcd0dfa.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
+
+
+
+    <style>
+        body{
+
+            font-family:cursive;
+        }
+
+        nav{
+
+            background: gray;
+        }
+        #pro{
+            background-color: white;
+            text-align: center;
+            border-bottom: 2px solid black;
+            height: 90px;
+            font-size: 27px;
+            padding-top: 24px;
+
+        }
+        .left_content{
+            height:auto;
+            padding:5px 0px;
+        }
+        .information{
+
+            position: absolute;
+            top:35%;
+            left:38%;
+        }
+        .data{
+            padding:2px;
+        }
+
+
+        .opt-content{
+            margin-top:5px;
+            position:fixed;
+            display:none;
+            padding:5px 0px;
+            border:1px solid #dedede;
+            border-radius:4px;
+            width:250px;
+            background:#fff;
+            box-shadow: 5px 5px 5px #dddddd;
+            z-index: 9999;
+        }
+
+        .opt-content a{
+            color:#000000;
+            display: inline-block;
+            width: 100%;
+            padding:5px 10px;
+            text-decoration:none;
+        }
+
+
+        .opt-content a:hover{
+            cursor:pointer;
+            background-color: #e4eaff;
+        }
+
+    </style>
+
+
+
+    <script th:inline="javascript">
+        $(document).ready(function(){
+//            var data =eval('${employeeList}');
+            var data = [[${user_list}]];
+            var table = $('#example').DataTable( {
+                "aaData": data,
+                "aoColumns": [
+                    { "mData": "name"},
+                    { "mData": "age"},
+                    { "mData": "email"},
+                    { "mData": "phone"}
+                ]
+            });
+        });
+
+
+
+        $(document).ready(function(){
+
+            $("#menu-btn").click(function(){
+
+                $(".opt-content").toggle(10);
+
+            });
+
+        });
+
+
+
+
+
+
+
+
+    </script>
+
+
+</head>
+<body>
+
+
+
+<nav class="navbar" style="border:2px solid black;">
+
+
+
+
+        <h2> Navigation</h2>
+
+        <span>
+            <div style="margin:5px 10px;" >
+            <div style="cursor: pointer" id="menu-btn"  > [[${user_name}]] <i style="font-size:20px;"  class="fa fa-caret-down"></i> </div>
+            <div class="opt-content">
+                <a href="/logout"> Logout </a>
+            </div>
+            </div>
+       </span>
+
+
+
+
+</nav>
+
+<div class="row">
+
+    <div class="col-lg-2" style="border:2px solid black;height:690px;margin:0px;padding:0px;">
+
+        <div class="left_content">
+
+            <div style="border-bottom:2px solid black;padding: 9px 68px;">User List</div>
+
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-10">
+
+        <div  id="pro" style="margin-bottom: 30px">User List</div>
+
+        <table  id="example" class="table table-striped table-bordered" style="width:100%;">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+</body>
+</html>

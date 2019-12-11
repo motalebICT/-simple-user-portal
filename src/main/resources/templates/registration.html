@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Registration Panel</title>
+    <script src="https://kit.fontawesome.com/b666b9dfcf.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style>
+
+        body{
+
+
+        }
+        .head_container{
+            width:400px;
+            position: absolute;
+            top:15%;
+            left:35%;
+            font-family:cursive;
+
+        }
+
+        .main_container{
+
+            width: 375px;
+            height: 375px;
+            border: 3px solid black;
+
+
+
+
+        }
+        .information{
+
+            margin:12px 10px;
+
+        }
+        .input_inforamtion{
+
+            width:50px;
+
+
+
+        }
+
+        input{
+            width:200px;
+            padding: 4px 8px;
+            margin: 5px 15px;
+            border:2px solid black;
+        }
+        .awesom
+        {
+
+            font-size:26px;
+
+        }
+
+        .data{
+
+            width:100%;
+
+        }
+
+        .fontawesome{
+            font-size:55px;
+            margin-left:167px;
+        }
+        .dob{
+
+            width:170px;
+        }
+
+
+    </style>
+
+
+
+
+    <script>
+
+
+
+        $(document).ready(function(){
+
+            $("#email").keyup(function(){
+
+                var email = $(this).val();
+
+                if(email.length==0){
+                    $("#is_available").hide();
+                }else {
+                    $("#is_available").show();
+                    if (validateEmail(email)) {
+                        $.ajax({
+                            type: "POST",
+                            url: "/check-email",
+                            data: {"email_address": email}, // serializes the form's elements.
+                            success: function (data) {
+                                // alert(data); // show response from the php script.
+                                if (data) {
+                                    $("#is_available").text("Email address not available.");
+                                    $("#btnSubmit").attr("disabled", true);
+                                } else {
+                                    $("#is_available").text("Email address is available.");
+                                    $("#btnSubmit").attr("disabled", false);
+                                }
+                            },
+                            error: function (status) {
+                                alert(status);
+                            }
+                        });
+
+                    } else {
+                        $("#is_available").text("Please enter valid email address.");
+                        $("#btnSubmit").attr("disabled", true);
+                    }
+
+                }
+
+            });
+
+
+        });
+
+        function validateEmail(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+    </script>
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+<div class="head_container">
+    <div class="fontawesome">
+        <i class="fas fa-address-book"></i>
+    </div>
+
+    <h2 align="center" style="padding: 0px;margin-bottom: 28px; margin-top: 0px;">Registration Panel</h2>
+
+    <div th:if="${registration_status!=null}">
+        <p th:if="${registration_status==true}">
+            Registration Success !
+        </p>
+        <p th:if="${registration_status==false}">
+            Registration failed, Please try again.
+        </p>
+    </div>
+
+    <div class="main_container">
+
+        <div class="information">
+
+            <form id="formId" action="/signup" modelAttribute="appuser" method="post">
+
+            <table class="data">
+
+                <tr>
+                    <td> First name </td>
+                    <td> <input  id="fname"  type="text" name="first_name" required> </td>
+                </tr>
+
+                <tr>
+                    <td> Last name </td>
+                    <td> <input id="lname"   type="text" name="last_name" required> </td>
+                </tr>
+
+                <tr>
+                    <td> Address </td>
+                    <td> <input  id="address"  type="address" name="address" required> </td>
+                </tr>
+
+                <tr>
+                    <td> Phone </td>
+                    <td> <input id="phone"   type="phone" name="phone" required> </td>
+                </tr>
+
+                <tr>
+                    <td> Email </td>
+                    <td>
+                        <input  id="email" type="email" name="email" required >
+                        <span id="is_available"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td> Birthdate </td>
+                    <td> <input id="dob" class="dob" type="date" name="dob" required><span class="awesom"><i class="fas fa-calendar-alt"></i></span> </td>
+                </tr>
+
+                <tr>
+
+                    <td> password </td>
+                    <td> <input id="password"  type="password" name="password" minlength="8" required> </td>
+
+                </tr>
+
+            </table>
+
+            <div style="margin:0px 70px;" >
+                <button id="btnSubmit" type="submit" style="margin-right:65px; background:none; border:1px solid black; box-shadow: 1px 1px 1px 1px black; cursor:pointer;">Register</button>
+                <button type="reset" style="background:none; border:1px solid black; box-shadow:1px 1px 1px 1px; cursor:pointer;">Cancel</button>
+            </div>
+
+        </form>
+
+        </div>
+
+    </div>
+
+    </div>
+
+</body>
+</html>

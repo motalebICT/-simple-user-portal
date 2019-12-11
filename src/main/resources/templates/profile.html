@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Profile Page </title>
+
+    <!--<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.js">-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>-->
+
+    <script src="https://kit.fontawesome.com/806fcd0dfa.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body{
+
+            font-family:cursive;
+        }
+
+        nav{
+
+            background: gray;
+        }
+        #pro{
+            background-color: white;
+            text-align: center;
+            border-bottom: 2px solid black;
+            height: 90px;
+            font-size: 27px;
+            padding-top: 24px;
+
+        }
+        .left_content{
+
+            height:auto;
+            padding:5px 0px;
+            border-bottom:2px solid black;
+        }
+        .information{
+
+            position: absolute;
+            top:35%;
+            left:38%;
+        }
+        .data{
+            padding:2px;
+        }
+
+
+        .opt-content{
+            margin-top:5px;
+            position:fixed;
+            display:none;
+            padding:5px 0px;
+            border:1px solid #dedede;
+            border-radius:4px;
+            width:250px;
+            background:#fff;
+            box-shadow: 5px 5px 5px #dddddd;
+            z-index: 9999;
+        }
+
+        .opt-content a{
+            color:#000000;
+            display: inline-block;
+            width: 100%;
+            padding:5px 10px;
+            text-decoration:none;
+        }
+
+
+        .opt-content a:hover{
+            cursor:pointer;
+            background-color: #e4eaff;
+        }
+
+
+
+    </style>
+
+
+
+    <script>
+        $(document).ready(function(){
+
+            $("#menu-btn").click(function(){
+
+                $(".opt-content").toggle(10);
+
+            });
+        });
+    </script>
+
+
+</head>
+<body>
+
+<nav class="navbar" style="border:2px solid black;">
+
+
+
+
+        <h2> Navigation</h2>
+
+        <span>
+            <div style="margin:5px 10px;" >
+            <div style="cursor: pointer" id="menu-btn"  > [[${user.first_name}]] [[${user.last_name}]] <i style="font-size:20px;"  class="fa fa-caret-down"></i> </div>
+            <div class="opt-content">
+                <a href="/change-password"> Change Password </a>
+                <a href="/logout"> Logout </a>
+            </div>
+            </div>
+       </span>
+
+
+
+
+
+</nav>
+<div class="row">
+
+    <div class="col-lg-2" style="border:2px solid black;height:690px;margin:0px;padding:0px;">
+
+        <div class="left_content">
+
+            <div style="border-bottom:2px solid black;padding: 9px 0px; text-align: center">
+                <a href="/profile"> Profile Page </a>
+            </div>
+
+            <div style="padding: 4px 0px; text-align: center">
+               <a href="/change-password"> Change Password </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-10" id="pro">User Profile</div>
+
+
+</div>
+
+<div class="information">
+    <table class="data">
+
+        <tr>
+            <td> First name </td>
+            <td> : [[${user.first_name}]] </td>
+        </tr>
+
+        <tr>
+            <td> Last name </td>
+            <td> : [[${user.last_name}]] </td>
+        </tr>
+
+        <tr>
+            <td> Address </td>
+            <td> : [[${user.address}]] </td>
+        </tr>
+
+        <tr>
+            <td> Phone : </td>
+            <td> [[${user.phone}]] </td>
+        </tr>
+
+        <tr>
+            <td> Email </td>
+            <td> : [[${user.email}]] </td>
+        </tr>
+
+        <tr>
+            <td> Birthdate </td>
+            <td> : [[${user.dob}]] </td>
+        </tr>
+
+
+
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,5 +1,7 @@
 package com.bitmascot.controller;
 
+import com.bitmascot.repository.AppUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -9,12 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LoginController {
 
+    @Autowired
+    AppUserRepository appUserRepository;
 
-    @GetMapping("/admin/login")
+    /* It will return login.html page */
+    @GetMapping("/")
     private String loadLoginPage()
     {
         return "login";
-        //sdkbaskdbaksdha
     }
 
 }

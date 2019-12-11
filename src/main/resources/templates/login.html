@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title> login panel </title>
+    <script src="https://kit.fontawesome.com/806fcd0dfa.js" crossorigin="anonymous"></script>
+    <style >
+        body
+        {
+            margin:0;
+            padding:0;
+        }
+        .main_container
+        {
+            font-family: cursive; ;width:300px;position:absolute;top:23%;left:35%;
+        }
+        .container
+        {
+            width:300px;height:300px;border:3px solid black;
+            margin-top:15px;
+        }
+        .em input
+        {
+            width:250px;height:25px;border:3px solid black;
+        }
+        .email
+        {
+            margin:20px;padding:5px;font-size: 21px;
+        }
+        .btn
+        {
+            margin:5px 0px;
+            display:inline-block;
+
+
+        }
+
+
+        .btn #log{
+            float:left;margin-right:20px;
+
+        }
+        .btn #clear{
+
+            float:right; margin-right:15px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="main_container">
+
+
+
+    <div align="center">
+        <div>
+            <i style="font-size:60px;"  class="fas fa-address-book"></i>
+        </div>
+
+        <h2  style="margin:2px ;padding:0px;"align="center">Login Panel</h2>
+
+        <p th:if="${param.error}" style="color:#ff4159">
+            Email address or password is wrong !
+        </p>
+
+    </div>
+    <div align="center">
+        <div class ="container">
+
+            <form method="post" action="/">
+
+
+
+            <div class="email" align="center">Email Address </div>
+            <div class ="em" align="center"><input name="username" type="email" required></div>
+            <div class ="email" align="center">password</div>
+            <div class="em" align="center"> <input name="password" type="password" minlength="4" required> </div>
+            <div class="btn">
+                <div id="log">
+                    <button type="submit" value="Login" style="background:none; border :3px solid black; box-shadow: 2px 2px 2px 2px black; cursor:pointer;" >Login</button>
+                </div>
+                <div id="clear"><input type="reset" value="Clear" style="background:none; border:3px solid black; box-shadow: 2px 2px 2px 2px black; cursor:pointer;"></div>
+            </div>
+
+            <div>
+                <span align> Are you new here? </span><a href="/registration">Register Now</a>
+            </div>
+
+            </form>
+
+        </div>
+    </div>
+
+
+
+
+</div>
+</body>
+</html>

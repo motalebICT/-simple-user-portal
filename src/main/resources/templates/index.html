@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form Using jQuery - Demo Preview</title>
+    <!--for font,view etc -->
+
+    <meta name="robots" content="noindex, nofollow">
+    <!-- Include CSS File Here -->
+    <link rel="stylesheet" href="css/style.css"/>
+    <!-- Include CSS File Here -->
+    <!--just header file -->
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+    <script src="js/jquery.min.js" ></script>
+    <script type="text/javascript" src="js/login.js"></script>
+
+    <script>
+
+        function login() {
+
+
+
+             var a = $("#email").val();
+             var b = $("#password").val();
+
+             alert("Email : "+a+", Password : "+b);
+             console.log(a+", "+b);
+
+        }
+
+
+        $(document).ready(function () {
+           // alert("ok execute succssfully");
+        });
+
+
+
+
+
+    </script>
+
+</head>
+<body>
+<div class="container">
+    <div class="main">
+        <form class="form" method="post" action="#">
+            <h2>Create Login Form Using jQuery</h2>
+            <label>Email :</label>
+            <input id="email" type="text" name="demail" >
+            <label>Password :</label>
+            <input id="password" type="password" name="password" >
+            <a href="#" onclick="login()" class="login-btn" type="button" name="login" id="login" value="Login"> Login </a>
+        </form>
+    </div>
+</div>
+</body>
+</html>
